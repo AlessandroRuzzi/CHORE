@@ -55,10 +55,6 @@ class DataPaths:
             #mask_file = img_file.replace('.color.jpg', '.obj_rend_mask.jpg')
             mask_file = "/data/aruzzi/Behave/obj_pred_masks/" + "-".join(img_file.split("/")[-3:])
             full_mask_file = "/data/aruzzi/behave-test-object-fullmask/" + img_file.split("/")[5] + "/" + img_file.split("/")[6] + "/" + 'k1.obj_rend_full.jpg'
-            if not isfile(mask_file):     
-                print(mask_file)
-            if not isfile(full_mask_file):
-                print(full_mask_file)
             if not isfile(mask_file) or not isfile(full_mask_file):
                 continue
 
