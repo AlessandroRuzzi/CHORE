@@ -70,7 +70,8 @@ class BaseDataset(Dataset):
 
     def load_masks(self, rgb_file, flip=False):
         person_mask_file = rgb_file.replace('.color.jpg', ".person_mask.jpg")
-        obj_mask_file = rgb_file.replace('.color.jpg', ".obj_rend_mask.jpg")
+        #obj_mask_file = rgb_file.replace('.color.jpg', ".obj_rend_mask.jpg")
+        obj_mask_file = "/data/aruzzi/Behave/obj_pred_masks/" + "-".join(rgb_file.split("/")[-3:])
         if not osp.isfile(obj_mask_file):
             obj_mask_file = rgb_file.replace('.color.jpg', ".obj_mask.jpg")
         person_mask = cv2.imread(person_mask_file, cv2.IMREAD_GRAYSCALE)

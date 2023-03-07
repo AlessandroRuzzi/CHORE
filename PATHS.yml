@@ -3,7 +3,7 @@
 # Cite: CHORE: Contact, Human and Object REconstruction from a single RGB image, ECCV'2022
 
 CODE: "/local/home/aruzzi/CHORE" # path to your project main folder
-BEHAVE_PATH: "/data/aruzzi" # root path where BEHAVE sequences are stored
+BEHAVE_PATH: "/data/xiwang/behave" # root path where BEHAVE sequences are stored
 PROCESSED_PATH: "/BS/xxie-5/static00/behave-train" # root path where processed data are saved
 RECON_PATH: "/data/aruzzi" # root path where reconstruction results will be saved
 

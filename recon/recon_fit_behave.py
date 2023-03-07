@@ -209,11 +209,11 @@ class ReconFitterBehave(ReconFitterBase):
 
                 # comment this for no contact baseline
                 self.compute_contact_loss(df_hum_o, df_obj_h, object, smpl_verts, loss_dict, part_o=part_o)
-                print("-----------------here4--------------------")
+                #print("-----------------here4--------------------")
                 # prevent interpenetration
                 pen_loss = self.compute_collision_loss(smpl_verts, smpl.faces,
                                                        R, obj_t, obj_s)
-                print("-----------------here5--------------------")
+                #print("-----------------here5--------------------")
                 loss_dict['collide'] = pen_loss
 
 
