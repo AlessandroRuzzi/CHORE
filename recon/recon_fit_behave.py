@@ -405,11 +405,9 @@ if __name__ == '__main__':
     configs.display = args.display
     configs.start = args.start
     configs.end = args.end
-    recon_fit(configs)
-    """
+    
     try:
         recon_fit(configs)
     except:
         log = traceback.format_exc()
         print(log)
-    """
