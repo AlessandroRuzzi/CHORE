@@ -129,13 +129,13 @@ class ReconFitterBehave(ReconFitterBase):
                 data_dict['trans_init'] = data_dict['obj_t'].detach().clone()
                 description = 'optimizing with silhouette'
             elif it == iter_for_obj + iter_for_sil:
-                print("here")
                 description = 'joint optimization'
                 phase = 'joint'
                 obj_optimizer = optim.Adam([obj_t, obj_s], lr=0.002)  # smaller learning rate, optimize translation only
 
             for i in range(steps_per_iter):
                 loss_dict = self.forward_step(model, smpl_split, data_dict, obj_R, obj_t, obj_s, phase)
+                print(loss_dict)
 
                 if loss_dict == 0.:
                     print('early stopped at iter {}'.format(it))
