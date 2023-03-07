@@ -44,7 +44,7 @@ class DataPaths:
         :return: a list of paths to test image files
         """
         image_files = sorted(glob.glob(seq + f"/*/k{tid}.color.jpg"))
-        print(image_files)
+        #print(image_files)
         # print(image_files)
         if not check_occlusion:
             return image_files
@@ -60,6 +60,7 @@ class DataPaths:
             mask = np.sum(cv2.imread(mask_file, cv2.IMREAD_GRAYSCALE) > 127)
             mask_full = np.sum(cv2.imread(full_mask_file, cv2.IMREAD_GRAYSCALE) > 127)
             if mask_full == 0:
+                print("here")
                 count += 1
                 continue
 
