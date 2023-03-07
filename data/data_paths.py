@@ -54,22 +54,21 @@ class DataPaths:
         for img_file in image_files:
             mask_file = img_file.replace('.color.jpg', '.obj_rend_mask.jpg')
             full_mask_file = img_file.replace('.color.jpg', '.obj_rend_full.jpg')
+            print(mask_file)
+            print(full_mask_file)
             if not isfile(mask_file) or not isfile(full_mask_file):
                 continue
 
             mask = np.sum(cv2.imread(mask_file, cv2.IMREAD_GRAYSCALE) > 127)
             mask_full = np.sum(cv2.imread(full_mask_file, cv2.IMREAD_GRAYSCALE) > 127)
             if mask_full == 0:
-                print("here")
                 count += 1
                 continue
 
             ratio = mask / mask_full
             if ratio > 0.3:
-                print("here2")
                 valid_files.append(img_file)
             else:
-                print("here3")
                 count += 1
                 print(f'{mask_file} occluded by {1 - ratio}!')
         return valid_files
