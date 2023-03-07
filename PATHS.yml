@@ -5,7 +5,7 @@
 CODE: "/local/home/aruzzi/CHORE" # path to your project main folder
 BEHAVE_PATH: "/data/aruzzi" # root path where BEHAVE sequences are stored
 PROCESSED_PATH: "/BS/xxie-5/static00/behave-train" # root path where processed data are saved
-RECON_PATH: "/BS/xxie-5/static00/newdata" # root path where reconstruction results will be saved
+RECON_PATH: "/data/aruzzi/suitcase" # root path where reconstruction results will be saved
 
 # paths to SMPL libs
 SMPL_ASSETS_ROOT: "assets"

@@ -17,7 +17,7 @@ import utils.render_utils as rutils
 
 
 def main(args):
-    fitter = ReconFitterCoco(args.seq_folder, obj_name=args.obj_name, outpath='./', args=args)
+    fitter = ReconFitterCoco(args.seq_folder, obj_name=args.obj_name, outpath='/data/aruzzi/', args=args)
     fitter.fit_recon(args)
 
     # render results
@@ -26,7 +26,6 @@ def main(args):
     side_renderer = rutils.setup_side_renderer(2.0, 0., 90.)
     image_folders = sorted(glob(args.seq_folder+"/*/"))
     for folder in image_folders:
-        print("-------------------------> ", folder)
         rgb = cv2.imread(folder + "k1.color.jpg")[:, :, ::-1]
         oh, ow = rgb.shape[:2]
         crop_info = pkl.load(open(folder+"k1.crop_info.pkl", 'rb'))
