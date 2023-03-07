@@ -18,7 +18,7 @@ import utils.render_utils as rutils
 
 def main(args):
     fitter = ReconFitterCoco(args.seq_folder, obj_name=args.obj_name, outpath='/data/aruzzi/', args=args)
-    #fitter.fit_recon(args)
+    fitter.fit_recon(args)
 
     # render results
     H, W = 1536, 2048

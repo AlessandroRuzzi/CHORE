@@ -51,6 +51,9 @@ _mesh_template = {
     'yogamat': "yogamat/yogamat_f1000.ply",
     'yogaball':"yogaball/yogaball_f1000.ply",
     'trashbin':"trashbin/trashbin_f1000.ply",
+    'umbrella': 'umbrella/umbrella.ply',
+    'tennisracket': 'tennisracket/tennisracket.ply',
+    'skateboard': 'skateboard/skateboard.ply',
 }
 
 
