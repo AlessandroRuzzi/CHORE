@@ -135,7 +135,6 @@ class ReconFitterBehave(ReconFitterBase):
 
             for i in range(steps_per_iter):
                 loss_dict = self.forward_step(model, smpl_split, data_dict, obj_R, obj_t, obj_s, phase)
-                print(loss_dict)
 
                 if loss_dict == 0.:
                     print('early stopped at iter {}'.format(it))

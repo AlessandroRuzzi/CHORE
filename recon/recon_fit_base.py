@@ -569,7 +569,8 @@ class ReconFitterBase:
                 contact_points_h.append(hp)
                 contact_points_o.append(op)
                 contact_names.append(self.part_names[i])
-        if len(contact_points_o) == 0:
+        #if len(contact_points_o) == 0:
+        if len(contact_points_o) == 0 or len(contact_points_h) == 0:
             print('no contact')
             return
         # pull contact points together
