@@ -597,6 +597,7 @@ class ReconFitterBase:
         with torch.no_grad():
             # find out the collision index
             collision_idxs = self.search_tree(triangles)
+        print("-----------------here15.2--------------------")
         pen_loss = torch.mean(self.pen_distance(triangles, collision_idxs))
         print("-----------------here16--------------------")
         return pen_loss
