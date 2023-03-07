@@ -66,8 +66,10 @@ class DataPaths:
 
             ratio = mask / mask_full
             if ratio > 0.3:
+                print("here2")
                 valid_files.append(img_file)
             else:
+                print("here3")
                 count += 1
                 print(f'{mask_file} occluded by {1 - ratio}!')
         return valid_files
