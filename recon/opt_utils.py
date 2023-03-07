@@ -60,7 +60,7 @@ def get_template_path(behave_path, obj_name):
 def load_scan_centered(scan_path, cent=True):
     """load a scan and centered it around origin"""
     scan = Mesh()
-    # print(scan_path)
+    print(scan_path)
     scan.load_from_file(scan_path)
     if cent:
         center = np.mean(scan.v, axis=0)
