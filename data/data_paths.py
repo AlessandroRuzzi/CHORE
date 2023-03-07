@@ -44,6 +44,7 @@ class DataPaths:
         :return: a list of paths to test image files
         """
         image_files = sorted(glob.glob(seq + f"/*/k{tid}.color.jpg"))
+        print(image_files)
         # print(image_files)
         if not check_occlusion:
             return image_files
