@@ -111,7 +111,7 @@ class ReconFitterBase:
         :param obj_name: name of the object template
         :return:
         """
-        scan = opt_utils.load_scan_centered(opt_utils.get_template_path(BEHAVE_PATH+"/../objects", obj_name))
+        scan = opt_utils.load_scan_centered(opt_utils.get_template_path(BEHAVE_PATH+"/objects", obj_name))
         scan.v = scan.v - np.mean(scan.v, 0)
         self.scan = scan
         obj_verts = scan.v
