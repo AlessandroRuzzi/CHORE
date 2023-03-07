@@ -33,9 +33,9 @@ class Generator:
         self.threshold = threshold
 
         self.multi_gpus = multi_gpus  # model trained with multi-gpus or not, for loading checkpoint
-        self.checkpoint_path = os.path.dirname(__file__) + '/../experiments/{}/checkpoints/'.format(
+        self.checkpoint_path = os.path.dirname(__file__) + '/experiments/{}/checkpoints/'.format(
             exp_name)  # use new path
-        self.exp_path = os.path.dirname(__file__) + '/../experiments/{}/'.format(exp_name)
+        self.exp_path = os.path.dirname(__file__) + '/experiments/{}/'.format(exp_name)
         assert os.path.exists(self.checkpoint_path), f'{self.checkpoint_path} does not exist!'
         self.load_checkpoint(checkpoint)
         for param in self.model.parameters():
