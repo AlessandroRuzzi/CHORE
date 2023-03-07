@@ -343,8 +343,11 @@ class ReconFitterBase:
 
     def transform_obj_verts(self, verts, obj_R, obj_t, obj_s):
         "do scale after rotation and translation"
+        print("-----------------here10--------------------")
         verts = torch.bmm(verts, obj_R) + obj_t.unsqueeze(1)
+        print("-----------------here11--------------------")
         verts = verts * obj_s.unsqueeze(1).unsqueeze(1)
+        print("-----------------here12--------------------")
         return verts
 
     def decopose_axis(self, rot):
@@ -580,19 +583,22 @@ class ReconFitterBase:
         loss_dict['contact'] = dist
 
     def smpl_obj_collision(self, smpl_verts, smpl_faces, obj_verts, obj_faces):
+        print("-----------------here13--------------------")
         comb_verts = torch.cat([smpl_verts, obj_verts], 1)  # (B, N, 3)
         smpl_verts_count = smpl_verts.shape[1]
         comb_faces = torch.cat([smpl_faces, obj_faces + smpl_verts_count], 0)  # (F, 3)
+        print("-----------------here14--------------------")
 
         bs, nv = comb_verts.shape[:2]
         faces_idx = comb_faces + \
                     (torch.arange(bs, dtype=torch.long).to(self.device) * nv)[:, None, None]
         triangles = comb_verts.reshape([-1, 3])[faces_idx]
-
+        print("-----------------here15--------------------")
         with torch.no_grad():
             # find out the collision index
             collision_idxs = self.search_tree(triangles)
         pen_loss = torch.mean(self.pen_distance(triangles, collision_idxs))
+        print("-----------------here16--------------------")
         return pen_loss
 
     def compute_collision_loss(self, smpl_verts, smpl_faces, obj_R, obj_t, obj_s):
@@ -605,9 +611,13 @@ class ReconFitterBase:
         :param obj_s:
         :return:
         """
+        print("-----------------here6--------------------")
         scan_verts = torch.tensor(self.scan.v, dtype=torch.float32).repeat(obj_R.shape[0], 1, 1).to(self.device)
+        print("-----------------here7--------------------")
         verts = self.transform_obj_verts(scan_verts, obj_R, obj_t, obj_s)
+        print("-----------------here8--------------------")
         pen_loss = self.smpl_obj_collision(smpl_verts, smpl_faces, verts, self.scan_faces)
+        print("-----------------here9--------------------")
         return pen_loss
 
     def compute_kpts_loss(self, data_dict, loss_dict, smpl):
