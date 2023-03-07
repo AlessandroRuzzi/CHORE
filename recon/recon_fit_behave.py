@@ -184,6 +184,7 @@ class ReconFitterBehave(ReconFitterBase):
 
         image, edges = None, None
         if phase == 'sil':
+            print("-----------------here--------------------")
             # using only silhouette loss to optimize rotation
             sil = data_dict['silhouette']  # silhouette loss
             obj_losses, image, edges, image_ref, edt_ref = sil(R, obj_t, obj_s)
@@ -192,7 +193,9 @@ class ReconFitterBehave(ReconFitterBase):
             data_dict['edt_ref'] = edt_ref # for visualization
             loss_dict['scale'] = torch.mean((obj_s - self.obj_scale) ** 2) # 2D losses are prone to local minimum, need regularization
             loss_dict['trans'] = torch.mean((obj_t - data_dict['trans_init']) ** 2)
+            print("-----------------here1--------------------")
         else:
+            print("-----------------here2--------------------")
             preds = self.compute_obj_loss(data_dict, loss_dict, model, obj_s, object)
             # use ocent to regularize for object only optimization
             obj_center_act = torch.mean(object, 1)
@@ -208,12 +211,15 @@ class ReconFitterBehave(ReconFitterBase):
                 df_hum_o = df_pred[:, 1, :]
 
                 # comment this for no contact baseline
+                print("-----------------here3--------------------")
                 self.compute_contact_loss(df_hum_o, df_obj_h, object, smpl_verts, loss_dict, part_o=part_o)
-
+                print("-----------------here4--------------------")
                 # prevent interpenetration
                 pen_loss = self.compute_collision_loss(smpl_verts, smpl.faces,
                                                        R, obj_t, obj_s)
+                print("-----------------here5--------------------")
                 loss_dict['collide'] = pen_loss
+
 
         if self.debug:
             # visualize
