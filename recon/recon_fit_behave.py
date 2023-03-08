@@ -23,6 +23,8 @@ from model import CHORE
 from recon.generator import Generator
 from recon.obj_pose_roi import SilLossROI
 from recon.recon_fit_base import ReconFitterBase, RECON_PATH
+import numpy as np
+import random
 
 
 class ReconFitterBehave(ReconFitterBase):
@@ -371,6 +373,20 @@ if __name__ == '__main__':
     from argparse import ArgumentParser
     import traceback
     from config.config_loader import load_configs
+
+    torch.autograd.set_detect_anomaly(True)
+    torch.manual_seed(45)  # cpu
+    torch.cuda.manual_seed(55)  # gpu
+    np.random.seed(65)  # numpy
+    random.seed(75)  # random and transforms
+    torch.backends.cudnn.deterministic = True  # cudnn
+    torch.backends.cudnn.benchmark = True
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+
+    os.environ["OMP_NUM_THREADS"] = "1"
+    os.environ["MKL_NUM_THREADS"] = "1"
+    torch.set_num_threads(1)
 
     parser = ArgumentParser()
     parser.add_argument('exp_name', help='experiment name')

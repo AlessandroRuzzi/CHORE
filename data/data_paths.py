@@ -46,6 +46,7 @@ class DataPaths:
         image_files = sorted(glob.glob(seq + f"/*/k{tid}.color.jpg"))
         #print(image_files)
         # print(image_files)
+        return image_files
         if not check_occlusion:
             return image_files
         # check object occlusion ratio
