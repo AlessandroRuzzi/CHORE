@@ -17,7 +17,7 @@ for seq in os.listdir(behave_dir):
     if seq.startswith("Date03"):
         for cat in ["suitcase", "backpack", "basketball"]:
             if cat in seq:
-                while get_gpu_memory()[idxcard] < 5000:
+                while get_gpu_memory()[idxcard] < 50000:
                     time.sleep(60)
                 print('CUDA_VISIBLE_DEVICES={} python recon/recon_fit_behave.py chore-release --save_name chore-release -s {}/{} &'.format(idxcard, behave_dir, seq))
                 os.system('CUDA_VISIBLE_DEVICES={} python recon/recon_fit_behave.py chore-release --save_name chore-release -s {}/{} &'.format(idxcard, behave_dir, seq))
