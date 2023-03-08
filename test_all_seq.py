@@ -4,7 +4,7 @@ import os
 import subprocess as sp
 import time
 
-idxcard = 4
+idxcard = 5
 
 def get_gpu_memory():
     command = "nvidia-smi --query-gpu=memory.free --format=csv"
